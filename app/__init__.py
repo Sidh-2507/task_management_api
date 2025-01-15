@@ -6,6 +6,7 @@ from flask_jwt_extended import JWTManager
 db = SQLAlchemy()
 migrate = Migrate()
 jwt = JWTManager()  # Initialize JWTManager
+from .routes import api_bp
 
 def create_app():
     app = Flask(__name__)
@@ -18,7 +19,7 @@ def create_app():
     jwt.init_app(app)  # Initialize JWT with the app
 
     # Register blueprints
-    from .routes import api_bp
+
     app.register_blueprint(api_bp)
 
     return app
