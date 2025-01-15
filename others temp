@@ -1,3 +1,0 @@
-FLASK_ENV=production: Sets the app to production mode.
-JWT_SECRET_KEY=your_jwt_secret_key: The key used to sign JWT tokens. Replace your_jwt_secret_key with the secure key you generated earlier.
-DATABASE_URL=your_database_url:
