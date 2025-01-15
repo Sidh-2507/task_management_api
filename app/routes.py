@@ -52,14 +52,13 @@ def get_tasks():
 @api_bp.route('/tasks', methods=['POST'])
 @jwt_required()
 def create_task():
-    current_user_id = get_jwt_identity()  # Get the logged-in user's ID
+    current_user_id = get_jwt_identity()  # Get user ID from the token
     data = request.get_json()
-
     new_task = Task(
         title=data['title'],
         description=data.get('description', ''),
         is_completed=data.get('is_completed', False),
-        user_id=current_user_id  # Assign the logged-in user as the task owner
+        user_id=current_user_id  # Automatically associate with the logged-in user
     )
     db.session.add(new_task)
     db.session.commit()
